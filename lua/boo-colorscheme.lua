@@ -730,7 +730,8 @@ local colorscheme = function(c)
 		{ "Question", c.cloud10, c.none, s.bold },
 
 		-- Visual
-		{ "Visual", c.cloud10, c.cloud13:dark(0.2) },
+		-- { "Visual", c.cloud10, c.cloud13:dark(0.2) },
+		{ "Visual", c.cloud7, c.cloud4 },
 		{ "VisualNOS", c.cloud2, c.cloud1 },
 	}
 
@@ -941,7 +942,7 @@ M.setup = function(opts)
 
 	if opts ~= nil and opts["theme"] ~= nil and opts["theme"] == "oexi" then
 		color_map["fg"] = colors("#dfd8e7")
-		color_map["bg"] = colors("#09090b")
+		color_map["bg"] = colors("#040405")
 	end
 
 	return colorscheme(color_map)
