@@ -683,7 +683,8 @@ local colorscheme = function(c)
 
 		-- Side Column
 		{ "CursorColumn", c.cloud4:desaturate_to(0.1), c.none, s.NONE, "20" },
-		{ "LineNr", c.cloud10:desaturate_to(0.05):lighten_to(0.3) },
+		-- { "LineNr", c.cloud10:desaturate_to(0.05):lighten_to(0.3) },
+		{ "LineNr", c.cloud0 },
 		{ "CursorLineNr", c.cloud5 },
 		{ "Line", c.cloud12 },
 		{ "SignColumn", c.none },
@@ -719,8 +720,10 @@ local colorscheme = function(c)
 		{ "SpellRare", c.cloud6, c.none, s.undercurl },
 
 		-- Statusline
-		{ "StatusLine", c.cloud10, c.cloud8:dark(0.2) },
-		{ "StatusLineNC", c.cloud4, c.cloud8:dark(0.3) },
+		-- { "StatusLine", c.cloud10, c.cloud8:dark(0.2) },
+		{ "StatusLine", c.cloud10, c.cloud0 },
+		-- { "StatusLineNC", c.cloud4, c.cloud8:dark(0.3) },
+		{ "StatusLineNC", c.cloud4, c.cloud0 },
 
 		-- Tabline
 		{ "TabLine", c.cloud2, c.cloud0:dark() },
@@ -731,7 +734,7 @@ local colorscheme = function(c)
 
 		-- Visual
 		-- { "Visual", c.cloud10, c.cloud13:dark(0.2) },
-		{ "Visual", c.cloud7, c.cloud4 },
+		{ "Visual", c.cloud7, c.cloud4:dark(0.1) },
 		{ "VisualNOS", c.cloud2, c.cloud1 },
 	}
 
@@ -942,7 +945,7 @@ M.setup = function(opts)
 
 	if opts ~= nil and opts["theme"] ~= nil and opts["theme"] == "oexi" then
 		color_map["fg"] = colors("#dfd8e7")
-		color_map["bg"] = colors("#040405")
+		color_map["bg"] = colors("#09090b")
 	end
 
 	return colorscheme(color_map)
