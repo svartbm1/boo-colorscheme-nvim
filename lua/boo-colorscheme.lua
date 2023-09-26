@@ -191,6 +191,27 @@ local radioactive = function()
 	}
 end
 
+local oexi = function()
+	return {
+		"#202027", -- 0  default 222827
+		"#d5a8e4", -- 1  default d5a8e4
+		"#9c75dd", -- 2  default 9c75dd
+		"#9898ae", -- 3  default 9898ae
+		"#654a96", -- 4  default 654a96
+		"#5e5566", -- 5  default 625566
+		"#a9d1df", -- 6  default a9d1df
+		"#eaeaea", -- 7  default e6ebe5
+		"#5d6f74", -- 8  default 5d6f74
+		"#cd749c", -- 9  default cd749c
+		"#63b0b0", -- 10 default 63b0b0
+		"#c0c0dd", -- 11 default c0c0dd
+		"#5786bc", -- 12 default 5786bc
+		"#3b3442", -- 13 default 3f3442
+		"#849da2", -- 14 default 849da2
+		"#d8d8d8", -- 15 defauly d9d6cf
+	}
+end
+
 local vimscript = function(c)
 	return {
 		{ "vimcommand", c.cloud4 },
@@ -297,11 +318,11 @@ end
 
 local telescope = function(c)
 	return {
-		{ "TelescopeBorder", c.bg:lighten_to(0.3) },
+		{ "TelescopeBorder", c.bg:lighten_to(0.25) },
 		{ "TelescopeNormal", c.cloud0:light(0.3) },
 		{ "TelescopePromptPrefix", c.cloud10:dark(0.2) },
-
-		{ "TelescopeSelection", c.cloud10:light(), c.cloud8:dark(0.2), s.bold },
+		--{ "TelescopeSelection", c.cloud10:light(), c.cloud8:dark(0.2), s.bold },
+		{ "TelescopeSelection", c.cloud10:light(), c.cloud0:light(0.2), s.bold },
 		{ "TelescopeMatching", c.cloud4:light() },
 	}
 end
@@ -795,7 +816,7 @@ end
 -- @param opts table
 M.use = function(opts)
 	vim.g.termguicolors = true
-	vim.g.colors_name = "boo"
+	vim.g.colors_name = "boo-oexi"
 	local colormap = M.setup(opts)
 
 	for _, group in ipairs(colormap) do
@@ -843,6 +864,10 @@ local find_theme_colors = function(opts)
 		if opts["theme"] == "boo_lora" then
 			return boo_lora
 		end
+
+		if opts["theme"] == "oexi" then
+			return oexi
+		end
 	end
 
 	if vim.g.boo_colorscheme_theme == "sunset_cloud" then
@@ -867,6 +892,10 @@ local find_theme_colors = function(opts)
 
 	if vim.g.boo_colorscheme_theme == "boo_lora" then
 		return boo_lora
+	end
+
+	if vim.g.boo_colorscheme_theme == "oexi" then
+		return oexi
 	end
 
 	return cloud
@@ -908,6 +937,11 @@ M.setup = function(opts)
 	if opts ~= nil and opts["theme"] ~= nil and opts["theme"] == "boo_lora" then
 		color_map["fg"] = colors("#e4dcec")
 		color_map["bg"] = colors("#111113"):lighten_to(0.05)
+	end
+
+	if opts ~= nil and opts["theme"] ~= nil and opts["theme"] == "oexi" then
+		color_map["fg"] = colors("#dfd8e7")
+		color_map["bg"] = colors("#09090b")
 	end
 
 	return colorscheme(color_map)
